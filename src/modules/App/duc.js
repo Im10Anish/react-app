@@ -20,8 +20,7 @@ export const AppDuc = new Duck({
 		}
 	},
 	selectors: {
-		activeModule: state =>
-			getIn(state, ['partner', 'activeModule']) || 'Error',
+		activeModule: state => getIn(state, ['app', 'activeModule']) || 'Error',
 	},
 	creators: duck => ({
 		setActiveModule: module => ({

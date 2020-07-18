@@ -14,7 +14,7 @@ const routePageInterceptor = action => {
 export const MainRouteDuc = new Duck({
 	namespace: '@route',
 	store: 'global',
-	types: ['APP'],
+	types: ['APP', 'APP$ACTION'],
 	initialState: 'Error',
 	reducer: (state, action, duck) => {
 		const interceptedRoutes = routePageInterceptor(action)
