@@ -1,5 +1,5 @@
 module.exports = {
 	rules: {
-		'type-enum': [2, 'always', ['major', 'minor', 'patch']],
+		'type-enum': [2, 'always', ['major', 'minor', 'patch', 'refactor']],
 	},
 }
