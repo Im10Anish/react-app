@@ -1,36 +1,54 @@
 {
-    "name": "react-app",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "@testing-library/jest-dom": "^4.2.4",
-        "@testing-library/react": "^9.3.2",
-        "@testing-library/user-event": "^7.1.2",
-        "react": "^16.13.1",
-        "react-dom": "^16.13.1",
-        "react-scripts": "3.4.1"
-    },
-    "scripts": {
-        "develop": "react-app-rewired start",
-        "build": "react-app-rewired build"
-    },
-    "eslintConfig": {
-        "extends": "react-app"
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "devDependencies": {
-        "customize-cra": "^1.0.0",
-        "react-app-rewired": "^2.1.6"
-    }
+	"name": "react-app",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@testing-library/jest-dom": "^4.2.4",
+		"@testing-library/react": "^9.3.2",
+		"@testing-library/user-event": "^7.1.2",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"react-scripts": "3.4.1"
+	},
+	"scripts": {
+		"develop": "react-app-rewired start",
+		"build": "react-app-rewired build",
+		"lint:all": "NODE_ENV=development"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^9.1.1",
+		"@commitlint/config-conventional": "^9.1.1",
+		"customize-cra": "^1.0.0",
+		"husky": "^4.2.5",
+		"lint-staged": "^10.2.11",
+		"prettier": "^2.0.5",
+		"react-app-rewired": "^2.1.6"
+	},
+	"lint-staged": {
+		"*.{js,jsx}": [
+			"prettier --tab-width 4 --use-tabs --write",
+			"git add"
+		]
+	},
+	"husky": {
+		"hooks": {
+			"commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+			"pre-commit": "lint-staged"
+		}
+	}
 }
