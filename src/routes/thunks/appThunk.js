@@ -1,7 +1,11 @@
 import { AppDuc } from 'react-app/modules/App/duc'
 import { MainRouteDuc } from 'react-app/routes/duc'
 import { getIn } from 'timm'
+import saga from 'react-app/modules/App/saga'
 
+const mockData = {
+	name: 'React',
+}
 export default async (dispatch, getState, { action, extra }) => {
 	const { type } = action
 
@@ -10,7 +14,7 @@ export default async (dispatch, getState, { action, extra }) => {
 		'location',
 		'current',
 	])
-
+	extra.getSagaInjectors().injectSaga('app', { saga })
 	const isMainComponent = MainRouteDuc.types.APP === type
 	const isSubComponent = MainRouteDuc.types.APP$ACTION === type
 
@@ -23,6 +27,9 @@ export default async (dispatch, getState, { action, extra }) => {
 		activeModule = 'main'
 	} else if (isSubComponent) {
 		activeModule = payload.action
+		if (payload.action === 'receive') {
+			dispatch(AppDuc.creators.receiveData(mockData))
+		}
 	}
 	dispatch(AppDuc.creators.setActiveModule(activeModule))
 }

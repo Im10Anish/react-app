@@ -14,7 +14,6 @@ const modulesMap = {
 }
 const App = () => {
 	const activeModule = useSelector(AppDuc.selectors.activeModule)
-	console.log('+++activeModule+++', activeModule)
 	const Component = modulesMap[activeModule] || Error
 	return <Component />
 }
